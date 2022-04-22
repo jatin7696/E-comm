@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddProduct = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setcategory] = useState("");
   const [company, setCompnay] = React.useState("");
   const [error, setError] = React.useState(false);
+  
   const addProduct = async () => {
     console.log("jhjfgsjbdfbgjsbjk", name, price, category);
     if (!name || !price || !company || !category) {
@@ -23,6 +26,7 @@ export const AddProduct = () => {
     });
     result = await result.json();
     console.warn(result);
+    navigate("/");
   };
   return (
     <div className="register">
