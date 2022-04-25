@@ -7,7 +7,7 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import PrivateComponent from "./Components/PrivateComponent";
 //import "bootstrap/dist/css/bootstrap.css";
-//import Carousel from "./Components/Carousel";
+import Carousel from "./Components/Carousel";
 
 function App() {
   return (
@@ -25,6 +25,9 @@ function App() {
           <Route path="/Login" element={<Login />} />
         </Routes>
       </BrowserRouter>
+      <div>
+        <Carousel />
+      </div>
     </div>
   );
 }

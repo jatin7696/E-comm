@@ -31,6 +31,7 @@ const Home = () => {
 
   const searchHandle = async (event) => {
     let key = event.target.value;
+    console.log("this is search >> ", key);
     if (key) {
       let result = await fetch(`http://localhost:8080/search/${key}`);
       result = await result.json();
@@ -42,6 +43,17 @@ const Home = () => {
     }
   };
 
+  const filterResult = async (par) => {
+    
+    console.log("this is filter function >> ", par);
+    const result = await products.filter((currData) => {
+      return currData.category === par;
+    });
+    console.log("this is category >> ", result);
+    setProducts(result);
+    // getProducts();
+  };
+
   return (
     <div className="product-list">
       <h3>Product List</h3>
@@ -51,6 +63,7 @@ const Home = () => {
         placeholder="Search Product"
         onChange={searchHandle}
       />
+
       <ul>
         <li>S. No.</li>
         <li>Name</li>
@@ -67,6 +80,7 @@ const Home = () => {
             <li>{item.category}</li>
             <li>
               <button onClick={() => deleteProduct(item._id)}>Delete</button>
+              {"   "}
               <Link to={"/update/" + item._id}>Update </Link>
             </li>
           </ul>
@@ -74,6 +88,17 @@ const Home = () => {
       ) : (
         <h1>No Result Found</h1>
       )}
+      <div className="cat-div">
+        <button className="cat" onClick={() => filterResult("Mobile")}>
+          Mobile
+        </button>
+        <button className="cat" onClick={() => filterResult("Food")}>
+          Food
+        </button>
+        <button className="cat" onClick={() => getProducts()}>
+          All
+        </button>
+      </div>
     </div>
   );
 };

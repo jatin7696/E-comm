@@ -91,7 +91,7 @@ header {
   height: 45px;
   border-radius: 50%;
   float: left;
-  margin-top: 3px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 
@@ -123,4 +123,15 @@ header {
   height: 38px;
   padding-left: 30px;
   border: solid 1px skyblue;
+}
+.App {
+  background-color: rgb(240, 235, 235);
+}
+.cat-div {
+  margin-bottom: 10px;
+}
+
+.cat {
+  border: 2px solid black;
+  margin-right: 16px;
 }
