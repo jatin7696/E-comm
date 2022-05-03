@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const AddProduct = () => {
@@ -8,7 +8,7 @@ export const AddProduct = () => {
   const [category, setcategory] = useState("");
   const [company, setCompnay] = React.useState("");
   const [error, setError] = React.useState(false);
-  
+
   const addProduct = async () => {
     console.log("jhjfgsjbdfbgjsbjk", name, price, category);
     if (!name || !price || !company || !category) {

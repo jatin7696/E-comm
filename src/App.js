@@ -7,11 +7,12 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import PrivateComponent from "./Components/PrivateComponent";
 //import "bootstrap/dist/css/bootstrap.css";
-import Carousel from "./Components/Carousel";
+//import Carousel from "./Components/Carousel";
+import UpdateProduct from "./Components/Update";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <BrowserRouter>
         <Nav />
 
@@ -19,15 +20,13 @@ function App() {
           <Route path="/" element={<PrivateComponent />}>
             <Route path="/" element={<Home />} />
             <Route path="/AddProduct" element={<AddProduct />} />
+            <Route path="/update/:id" element={<UpdateProduct />} />
           </Route>
 
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-      <div>
-        <Carousel />
-      </div>
     </div>
   );
 }
