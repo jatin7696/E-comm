@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //const Home1 = () => {};
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  // let [filterproducts, setfilterProducts] = useState([]);
   // let productsAll = [];
-  // console.log(productsAll, "data");
+  //console.log(productsAll, "data");
+  const [products, setProducts] = useState([]);
+  let [filterproducts, setfilterProducts] = useState([]);
 
   // console.log(productsAll, "==== all;;;;;;; data");
   useEffect(() => {
@@ -22,8 +22,8 @@ const Home = () => {
     console.log("this is company=== ", result);
     //console.log("this isb price ", result);
     // if (result) {
-    // productsAll = result;
-    // console.log(result, "==== all data");
+    //productsAll = result;
+    console.log(result, "==== all data");
     // }
 
     //console.log(result, "==== all data");
@@ -34,7 +34,7 @@ const Home = () => {
 
   const deleteProduct = async (id) => {
     console.log("this is deleted id ======", id);
-    let result = await fetch(`http://localhost:8080/product/${id}`, {
+    let result = await fetch(`http://localhost:8080/delete/${id}`, {
       method: "Delete",
     });
     result = await result.json();
@@ -57,12 +57,14 @@ const Home = () => {
     }
   };
   //console.log(productsAll, " all");
+  //let arr = [];
   const filterResult = async (pr) => {
     //setfilterProducts = pr;
     //getProducts();
     //console.log("this is filter function >> ", productsAll);
-    const arr = products;
-    const result = await arr.filter((currData) => {
+    //const arr = products;
+    //arr = products;
+    const result = await products.filter((currData) => {
       console.log("this is under filter === ", currData);
       return currData.category === pr;
     });
@@ -70,7 +72,8 @@ const Home = () => {
     console.log("this is category >> ", result);
     //productsAll = result;
     //console.log(productsAll, "==== all;;;;;;; data");
-    setProducts(result);
+    //setProducts(result);
+    setfilterProducts(result);
     // setTimeout(() => {
     //   console.log("this is under settimeout");
     //   getProducts();

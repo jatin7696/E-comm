@@ -25,7 +25,7 @@ const UpdateProduct = () => {
 
   const updateProduct = async () => {
     console.log(name, price, category, company);
-    let result = await fetch(`http://localhost:8080/product/${params.id}`, {
+    let result = await fetch(`http://localhost:8080/Update/${params.id}`, {
       method: "Put",
       body: JSON.stringify({ name, price, category, company }),
       headers: {
@@ -34,7 +34,7 @@ const UpdateProduct = () => {
     });
 
     result = await result.json();
-    console.log("this is updated result inreact", result);
+    console.log("this is updated result in react", result);
     if (result) {
       navigate("/");
     }

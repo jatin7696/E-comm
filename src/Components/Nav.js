@@ -27,6 +27,9 @@ export const Nav = () => {
             <Link to="/Update">Update Product</Link>
           </li>
           <li>
+            <Link to="/Contact">Contact</Link>
+          </li>
+          <li>
             <Link to="/Signup" onClick={logout}>
               Logout
             </Link>
