@@ -225,3 +225,17 @@ button.badge {
   font-size: 3.5rem;
   color: midnightblue;
 }
+.pagination-Btn {
+  background: beige;
+  padding: 1px;
+  width: 35px;
+}
+.blackButton {
+  background-color: black;
+  color: white;
+}
+
+.whiteButton {
+  background-color: white;
+  color: black;
+}

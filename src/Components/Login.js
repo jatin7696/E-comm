@@ -24,6 +24,7 @@ const Login = () => {
     result = await result.json();
 
     if (result.auth) {
+      // console.log("this is login cp ", result.auth);
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
       navigate("/");
