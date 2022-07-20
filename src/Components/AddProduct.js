@@ -17,6 +17,7 @@ export const AddProduct = () => {
     }
 
     const userId = JSON.parse(localStorage.getItem("user"))._id;
+    console.log('this is userid ====> ',userId)
     let result = await fetch("http://localhost:8080/add-product", {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userId }),
@@ -28,6 +29,8 @@ export const AddProduct = () => {
     console.warn(result);
     navigate("/");
   };
+
+  // const reset = () => {};
   return (
     <div className="register">
       <h1>Add Product</h1>

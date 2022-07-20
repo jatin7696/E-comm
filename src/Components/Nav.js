@@ -34,6 +34,11 @@ export const Nav = () => {
               Logout {auth.name}
             </Link>
           </li>
+          <li>
+            <Link to="/Cart" className="cart-right">
+              Cart
+            </Link>
+          </li>
         </ul>
       ) : (
         <ul className="Nav-ul nav-right">

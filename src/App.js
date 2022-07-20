@@ -10,6 +10,7 @@ import PrivateComponent from "./Components/PrivateComponent";
 //import Carousel from "./Components/Carousel";
 import UpdateProduct from "./Components/Update";
 import ContactUs from "./Components/ContactUs";
+import Cart from "./Components/Cart";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/AddProduct" element={<AddProduct />} />
             <Route path="/update/:id" element={<UpdateProduct />} />
             <Route path="/Contact" element={<ContactUs />} />
+            <Route path="/Cart" element={<Cart />} />
           </Route>
 
           <Route path="/Signup" element={<Signup />} />

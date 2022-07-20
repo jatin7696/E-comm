@@ -20,7 +20,7 @@ const Login = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log("this is ", result);
+    console.log("this is ", result.auth);
     result = await result.json();
 
     if (result.auth) {
