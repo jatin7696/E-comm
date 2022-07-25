@@ -1,17 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Cart = (props) => {
-  console.log("this is props === ", props);
-  const navigate = useNavigate();
-  const { cartItems, addToCart, onRemove } = props;
-  console.log("this is cartitems === ", cartItems.length);
-  const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
-  const taxPrice = itemsPrice * 0.14;
-  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + taxPrice + shippingPrice;
-  console.log("totalPrice " + totalPrice);
+  // console.log("this is props === ", props);
+  let navigate = useNavigate();
+  let { cartItems, addToCart, onRemove } = props;
+  // console.log("this is cartitems === ", cartItems.length);
+  let itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+  let taxPrice = itemsPrice * 0.14;
+  let shippingPrice = itemsPrice > 2000 ? 0 : 20;
+  let totalPrice = itemsPrice + taxPrice + shippingPrice;
+  // console.log("totalPrice " + totalPrice);
+
+  // const clearCart = () => {
+
+  //     cartItems: [],
+
+  // }
+  /********************************** CHECKOUT Process through razorpay  ********************************************************* */
+
   async function loadRazorpay() {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -47,8 +55,19 @@ const Cart = (props) => {
               razorpayOrderId: response.razorpay_order_id,
               razorpaySignature: response.razorpay_signature,
             });
-            alert(result.data.msg);
-            navigate("/Cart");
+            console.log("resultttttttttttttt ", result);
+            //new Swal("Hello world!");
+            // new Swal("Congrats!", result.data.msg);
+            new Swal({
+              title: "Good job!",
+              text: result.data.msg,
+              icon: "success",
+              button: "Aww yiss!",
+            });
+
+            //alert(result.data.msg);
+            //navigate("/");
+            //navigate("/Cart");
             // fetchOrders();
           },
           prefill: {
@@ -60,7 +79,7 @@ const Cart = (props) => {
             address: "example address",
           },
           theme: {
-            color: "#80c0f0",
+            color: "#664fe3",
           },
         };
 
@@ -130,6 +149,7 @@ const Cart = (props) => {
             <hr />
             <div className="row">
               <button onClick={loadRazorpay}>Checkout</button>
+              <button>Clear Cart</button>
             </div>
           </>
         )}

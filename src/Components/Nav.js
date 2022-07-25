@@ -34,11 +34,11 @@ export const Nav = () => {
               Logout {auth.name}
             </Link>
           </li>
-          <li>
+          {/*<li>
             <Link to="/Cart" className="cart-right">
               Cart
             </Link>
-          </li>
+          </li> */}
         </ul>
       ) : (
         <ul className="Nav-ul nav-right">

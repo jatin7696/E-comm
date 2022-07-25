@@ -18,11 +18,11 @@ const Home = () => {
   const cartArr = [];
 
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
-  console.log("top pagenumber", pageNumber);
+  // console.log("top pagenumber", pageNumber);
 
   function ab(ci) {
     ci.find((x) => {
-      console.log("this is another function ====", x._id);
+      //  console.log("this is another function ====", x._id);
     });
   }
   ab(cartItems);
@@ -30,6 +30,8 @@ const Home = () => {
   useEffect(() => {
     getProducts();
   }, [pageNumber]);
+
+  /********************************** Get Products from backend through API ********************************************************* */
 
   const getProducts = async () => {
     try {
@@ -77,27 +79,31 @@ const Home = () => {
       getProducts();
     }
   };
+  /********************************** Search Products from backend through API ********************************************************* */
 
   const searchHandle = async (event) => {
     let key = event.target.value;
-    // console.log("this is search >> ", key);
+    //  console.log("this is search >> ", key);
     if (key) {
       let result = await fetch(`${url}/search/${key}`);
       result = await result.json();
+      //   console.log("thisisreturnbsearchhhhhhhhhhhhhhhh", result);
       if (result) {
-        setProducts(result);
+        setTrial(result);
       }
     } else {
       getProducts();
     }
   };
 
-  console.log(products);
+  // console.log(products);
+
+  /********************************** Filter Function ********************************************************* */
 
   const filterResult = async (pr) => {
     // console.log(pr)
     const result = await products.filter((currData) => {
-      console.log(currData.category, pr);
+      //  console.log(currData.category, pr);
       // console.log("this is under filter === ", currData);
       return currData.category === pr;
     });
@@ -113,14 +119,15 @@ const Home = () => {
   //   return arr;
   // };
 
+  /********************************** ADD TO CART functionality ********************************************************* */
   const addToCart = async (product) => {
-    console.log("this is ppppppppppppppppppp   ", product._id);
+    // console.log("this is ppppppppppppppppppp   ", product._id);
     //const addToCart
 
     // console.log("cart array ", cartArr);
     const userId = JSON.parse(localStorage.getItem("user"))._id;
-    console.log("userId ==== ", userId);
-    console.log("this is reacting prodyct  ===  ", product);
+    //  console.log("userId ==== ", userId);
+    //  console.log("this is reacting prodyct  ===  ", product);
     //setCart([...cart, product]);
     //let cartArr = funToAdd(product, cart);
     // console.log("cartArray ", cartArr);
@@ -153,7 +160,7 @@ const Home = () => {
     // //setCart([...cart, product]);
     const exist = cartItems.find((x) => x._id == product._id);
     if (exist) {
-      console.log("under exit condition");
+      //   console.log("under exit condition");
       setCartItems(
         cartItems.map((x) =>
           x._id === product._id
