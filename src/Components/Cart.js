@@ -59,10 +59,9 @@ const Cart = (props) => {
             //new Swal("Hello world!");
             // new Swal("Congrats!", result.data.msg);
             new Swal({
-              title: "Good job!",
+              title: "Good job!",
               text: result.data.msg,
               icon: "success",
-              button: "Aww yiss!",
             });
 
             //alert(result.data.msg);
