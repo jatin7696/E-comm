@@ -25,7 +25,7 @@ const UpdateProduct = () => {
 
   const updateProduct = async () => {
     console.log(name, price, category, company);
-    let result = await fetch(`http://localhost:8080/Update/${params.id}`, {
+    let result = await fetch(`http://localhost:8080/api/Update/${params.id}`, {
       method: "Put",
       body: JSON.stringify({ name, price, category, company }),
       headers: {

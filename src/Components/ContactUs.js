@@ -37,7 +37,7 @@ const ContactUs = () => {
     // console.log("email is valid ", validEmail);
     if (validEmail === true) {
       console.log("email is valid ");
-      let result = await fetch("http://localhost:8080/Contact", {
+      let result = await fetch("http://localhost:8080/api/Contact", {
         method: "Post",
         body: JSON.stringify({
           Name,

@@ -35,7 +35,7 @@ const Home = () => {
 
   const getProducts = async () => {
     try {
-      let result = await fetch(`${url}/products?page=${pageNumber}`, {
+      let result = await fetch(`${url}/api/products?page=${pageNumber}`, {
         method: "GET",
         headers: {
           authorization: JSON.parse(localStorage.getItem("token")),
@@ -71,7 +71,7 @@ const Home = () => {
   };
   const deleteProduct = async (id) => {
     //console.log("this is deleted id ======", id);
-    let result = await fetch(`${url}/delete/${id}`, {
+    let result = await fetch(`${url}/api/delete/${id}`, {
       method: "Delete",
     });
     result = await result.json();
@@ -85,7 +85,7 @@ const Home = () => {
     let key = event.target.value;
     //  console.log("this is search >> ", key);
     if (key) {
-      let result = await fetch(`${url}/search/${key}`);
+      let result = await fetch(`${url}/api/search/${key}`);
       result = await result.json();
       //   console.log("thisisreturnbsearchhhhhhhhhhhhhhhh", result);
       if (result) {
@@ -152,12 +152,12 @@ const Home = () => {
     //   headers: {
     //     "Content-Type": "application/json",
     //   },
-    //   // headers: {
-    //   //   authorization: JSON.parse(localStorage.getItem("token")),
-    //   // },
+    // headers: {
+    //   authorization: JSON.parse(localStorage.getItem("token")),
+    // },
     // });
     // console.log("this is reactingsssss ==  > ", addToCart);
-    // //setCart([...cart, product]);
+    //setCart([...cart, product]);
     const exist = cartItems.find((x) => x._id == product._id);
     if (exist) {
       //   console.log("under exit condition");

@@ -31,15 +31,18 @@ const Cart = (props) => {
       try {
         //setLoading(true);
         console.log("running");
-        const result = await axios.post("http://localhost:8080/create-order", {
-          amount: totalPrice,
-        });
+        const result = await axios.post(
+          "http://localhost:8080/api/create-order",
+          {
+            amount: totalPrice,
+          }
+        );
         console.log("resultfromorder   ", result.data);
         const { amount, id: order_id, currency } = result.data;
 
         const {
           data: { key: razorpayKey },
-        } = await axios.get("http://localhost:8080/get-razorpay-key");
+        } = await axios.get("http://localhost:8080/api/get-razorpay-key");
 
         const options = {
           key: razorpayKey,
@@ -49,12 +52,15 @@ const Cart = (props) => {
           description: "example transaction",
           order_id: order_id,
           handler: async function (response) {
-            const result = await axios.post("http://localhost:8080/pay-order", {
-              amount: amount,
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpayOrderId: response.razorpay_order_id,
-              razorpaySignature: response.razorpay_signature,
-            });
+            const result = await axios.post(
+              "http://localhost:8080/api/pay-order",
+              {
+                amount: amount,
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature,
+              }
+            );
             console.log("resultttttttttttttt ", result);
             //new Swal("Hello world!");
             // new Swal("Congrats!", result.data.msg);

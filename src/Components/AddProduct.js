@@ -18,7 +18,7 @@ export const AddProduct = () => {
 
     const userId = JSON.parse(localStorage.getItem("user"))._id;
     console.log('this is userid ====> ',userId)
-    let result = await fetch("http://localhost:8080/add-product", {
+    let result = await fetch("http://localhost:8080/api/add-product", {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {

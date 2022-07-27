@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
   }, []);
   const handleLogin = async (req, res) => {
     console.log("this is login component");
-    let result = await fetch("http://localhost:8080/login", {
+    let result = await fetch("http://localhost:8080/api/login", {
       method: "post",
       body: JSON.stringify({ username, password }),
       headers: {
